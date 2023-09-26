@@ -138,7 +138,7 @@ app.post("/comprarProducto",async(req,resp)=>{
 })
 
 app.post("/borrarProducto",async(req,resp)=>{
-    const productoData = req.query
+    const productoData = req.body
     await Producto.destroy({
         where:{
             id:productoData.id
