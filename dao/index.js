@@ -5,7 +5,7 @@ const CADENA_CONEXION ="postgresql://postgres:STP0GnnMuB0kTuBV9RDi@containers-us
 //"postgresql://ecommerceUser:postgres@localhost:5432/ecommerce"
 
 //const sequelize = new Sequelize(CADENA_CONEXION)
-export const sequelize = new Sequelize(
+const sequelize = new Sequelize(
     process.env.DATABASE_URL,
     {
         dialectOptions:{
@@ -140,5 +140,5 @@ Compra.belongsTo(Usuario,{
 })
 
 module.exports={
-    Usuario,Producto,Compra,Venta
+    Usuario,Producto,Compra,Venta,sequelize
 }

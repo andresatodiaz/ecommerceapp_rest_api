@@ -1,10 +1,9 @@
-const {sequelize} = require("./dao/index.js")
 const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require("cors")
 var crypto = require('crypto')
 
-const {Usuario,Producto,Compra,Venta}=require("./dao")
+const {Usuario,Producto,Compra,Venta,sequelize}=require("./dao")
 
 
 var PUERTO = process.env.PORT || 9999
