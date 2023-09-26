@@ -161,7 +161,7 @@ async function main() {
 
     try {
 
-        await sequelize.sync({force: true});
+        await sequelize.sync({force: false});
         console.log("Coneccion establecida con exito");
     
     } catch (error) {
