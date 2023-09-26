@@ -140,5 +140,5 @@ Compra.belongsTo(Usuario,{
 })
 
 module.exports={
-    Usuario,Producto,Compra,Venta,sequelize
+    Usuario,Producto,Compra,Venta
 }

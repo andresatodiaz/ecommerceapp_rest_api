@@ -3,7 +3,7 @@ const bodyParser = require("body-parser")
 const cors = require("cors")
 var crypto = require('crypto')
 
-const {Usuario,Producto,Compra,Venta,sequelize}=require("./dao")
+const {Usuario,Producto,Compra,Venta}=require("./dao")
 
 
 var PUERTO = process.env.PORT || 9999
@@ -157,7 +157,7 @@ app.listen(PUERTO,()=>{
     console.log(`Servidor web iniciado en puerto ${PUERTO}`)
 })
 
-async function main() {
+/* async function main() {
 
     try {
 
@@ -170,5 +170,5 @@ async function main() {
    
 }
 
-main();
+main(); */
 
