@@ -1,3 +1,4 @@
+import {sequelize} from "./dao/index.js"
 const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require("cors")
@@ -156,3 +157,19 @@ app.post("ModifyProducto",async(req,resp)=>{
 app.listen(PUERTO,()=>{
     console.log(`Servidor web iniciado en puerto ${PUERTO}`)
 })
+
+async function main() {
+
+    try {
+
+        await sequelize.sync({force: true});
+        console.log("Coneccion establecida con exito");
+    
+    } catch (error) {
+        console.error('No se pudo conectar a la base de datos:', error);
+    }
+   
+}
+
+main();
+
