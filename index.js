@@ -1,4 +1,4 @@
-import {sequelize} from "./dao/index.js"
+const {sequelize} = require("./dao/index.js")
 const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require("cors")
