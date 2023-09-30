@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors()) // politica CORS (cualquier origen) <---- TODO: cuidado!!!
 
 app.get("/getUsuario",async(req,resp)=>{
-    const userData = req.body
+    const userData = req.query
     const userResult = await Usuario.findOne({
         where:{
             id: userData.id,
@@ -28,7 +28,7 @@ app.get("/getUsuario",async(req,resp)=>{
 })
 
 app.get("/getVendedor",async(req,resp)=>{
-    const userData = req.body
+    const userData = req.query
     const userResult = await Usuario.findOne({
         where:{
             id: userData.id,
