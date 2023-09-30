@@ -27,6 +27,16 @@ app.get("/getUsuario",async(req,resp)=>{
     resp.send(userResult)
 })
 
+app.get("/getVendedor",async(req,resp)=>{
+    const userData = req.body
+    const userResult = await Usuario.findOne({
+        where:{
+            id: userData.id,
+        }
+    })
+    resp.send(userResult)
+})
+
 app.get("/miUsuario",async(req,resp)=>{
     const userData = req.query
     const userResult = await Usuario.findOne({
