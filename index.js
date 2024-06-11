@@ -1,19 +1,27 @@
-const express = require("express")
-const bodyParser = require("body-parser")
-const cors = require("cors")
-var crypto = require('crypto')
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const rateLimit = require("express-rate-limit"); // Import rate-limiting middleware
+var crypto = require('crypto');
 
-const {Usuario,Producto,Compra,Venta}=require("./dao")
+const { Usuario, Producto, Compra, Venta } = require("./dao");
 
+const PUERTO = process.env.PORT || 9999;
 
-var PUERTO = process.env.PORT || 9999
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors()); 
 
-const app = express()
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
-    extended : true
-}))
-app.use(cors()) // politica CORS (cualquier origen) <---- TODO: cuidado!!!
+// Apply rate limiting to all endpoints (adjust limits as needed)
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100,                  // limit each IP to 100 requests per windowMs
+  standardHeaders: true,     // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false,      // Disable the `X-RateLimit-*` headers
+  message: { error: "Too many requests, please try again later." }
+});
+app.use(limiter);
 
 app.get("/getUsuario",async(req,resp)=>{
     const userData = req.query
